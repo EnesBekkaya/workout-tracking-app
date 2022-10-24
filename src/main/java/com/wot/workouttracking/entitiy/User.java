@@ -33,4 +33,13 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<UserExercise> userExercises;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserMuscleGroups> userMuscleGroups;
+
+    @OneToOne(mappedBy = "user")
+    @PrimaryKeyJoinColumn
+    private BodyMeasurements bodyMeasurements;
 }
+
+

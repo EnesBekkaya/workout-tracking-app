@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -18,12 +19,13 @@ public class UserWorkoutDay {
     @GeneratedValue(generator = "seq_user_workout_days",strategy = GenerationType.SEQUENCE)
     private int id;
 
-    @Column(length = 200,name = "email")
+    @Column(length = 200,name = "workout_date")
     private Date workout_date;
 
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
 
-
+    @OneToMany(mappedBy = "userWorkoutDay")
+    private List<WorkOutDayMuscleGroups> workOutDayMuscleGroups;
 }
