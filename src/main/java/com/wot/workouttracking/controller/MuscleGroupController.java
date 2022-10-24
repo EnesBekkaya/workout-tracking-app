@@ -1,5 +1,4 @@
 package com.wot.workouttracking.controller;
-
 import com.wot.workouttracking.dto.MuscleGroupDto;
 import com.wot.workouttracking.service.MuscleGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ public class MuscleGroupController {
     public MuscleGroupController(MuscleGroupService muscleGroupService) {
         this.muscleGroupService = muscleGroupService;
     }
-
     @PostMapping("/save")
     public ResponseEntity<MuscleGroupDto> save(@RequestBody MuscleGroupDto muscleGroupDto){
         return ResponseEntity.ok(muscleGroupService.save(muscleGroupDto));

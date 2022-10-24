@@ -1,11 +1,7 @@
 package com.wot.workouttracking.service.impl;
 
 import com.wot.workouttracking.dto.MuscleGroupDto;
-import com.wot.workouttracking.dto.UserDto;
-import com.wot.workouttracking.dto.UserMuscleGroupDto;
 import com.wot.workouttracking.entitiy.MuscleGroup;
-import com.wot.workouttracking.entitiy.User;
-import com.wot.workouttracking.entitiy.UserMuscleGroups;
 import com.wot.workouttracking.repo.MuscleGroupRepository;
 import com.wot.workouttracking.service.MuscleGroupService;
 import org.modelmapper.ModelMapper;
@@ -18,8 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class MuscleGroupImpl implements MuscleGroupService {
 
-    private MuscleGroupRepository muscleGroupRepository;
-    private ModelMapper modelMapper;
+    private final MuscleGroupRepository muscleGroupRepository;
+    private final ModelMapper modelMapper;
 
 
     @Autowired
@@ -27,7 +23,6 @@ public class MuscleGroupImpl implements MuscleGroupService {
         this.muscleGroupRepository = muscleGroupRepository;
         this.modelMapper=modelMapper;
     }
-
 
 
     @Override

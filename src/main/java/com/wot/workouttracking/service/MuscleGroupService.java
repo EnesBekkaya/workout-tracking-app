@@ -8,5 +8,4 @@ public interface MuscleGroupService {
      List<MuscleGroupDto> getAll();
      MuscleGroupDto save(MuscleGroupDto muscleGroupDto);
 
-
 }
