@@ -12,7 +12,7 @@ public class UserExerciseDto {
 
     private Boolean favorite;
 
-   // private User user;
+    private User user;
 
     private MuscleGroup muscleGroup;
 }

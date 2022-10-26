@@ -1,7 +1,9 @@
 package com.wot.workouttracking.service.impl;
 
 import com.wot.workouttracking.dto.UserExerciseDto;
+import com.wot.workouttracking.dto.UserMuscleGroupDto;
 import com.wot.workouttracking.entitiy.UserExercise;
+import com.wot.workouttracking.entitiy.UserMuscleGroup;
 import com.wot.workouttracking.repo.UserExerciseRepository;
 import com.wot.workouttracking.service.UserExerciseService;
 import org.modelmapper.ModelMapper;
@@ -23,17 +25,8 @@ public class UserExerciseImpl implements UserExerciseService {
         this.modelMapper = modelMapper;
     }
 
-   /* @Override
-    public List<UserExerciseDto> getByMuscleGroupIdAndFavoriteAndUserID(int muscleGroupId, Boolean favorite,int userId){
-        List<UserExercise> userExercises=userExerciseRepository.getByMuscleGroupIdAndFavoriteAndUserID(muscleGroupId,favorite,userId);
-        List<UserExerciseDto>userExerciseDtos=userExercises.stream().map(userExercise -> modelMapper.map(userExercise,UserExerciseDto.class)).collect(Collectors.toList());
-        return userExerciseDtos;
-    }*/
 
-    @Override
-    public UserExerciseDto save(UserExerciseDto userExerciseDto) {
-        return null;
-    }
+
 
     @Override
     public List<UserExerciseDto> findUserExerciseByMuscleGroupIdAndUserIdAndFavorite(int muscleGroupId, int userId, Boolean favorite){
@@ -41,4 +34,18 @@ public class UserExerciseImpl implements UserExerciseService {
         List<UserExerciseDto>userExerciseDtos=userExercises.stream().map(userExercise -> modelMapper.map(userExercise,UserExerciseDto.class)).collect(Collectors.toList());
         return userExerciseDtos;
     }
+
+    @Override
+    public List<UserExerciseDto> getAll(int muscleGroupId,int userId){
+        List<UserExercise> userExercises=userExerciseRepository. findUserExerciseByMuscleGroupIdAndUserId(muscleGroupId,userId);
+        List<UserExerciseDto>userExerciseDtos=userExercises.stream().map(userExercise -> modelMapper.map(userExercise,UserExerciseDto.class)).collect(Collectors.toList());
+        return userExerciseDtos;
+    }
+    @Override
+   public UserExerciseDto add(UserExerciseDto userExerciseDto){
+        UserExercise userExercise=modelMapper.map(userExerciseDto,UserExercise.class);
+        return modelMapper.map(userExerciseRepository.save(userExercise),UserExerciseDto.class);
+    }
+
+
 }

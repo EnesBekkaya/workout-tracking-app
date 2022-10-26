@@ -1,20 +1,23 @@
 package com.wot.workouttracking.entitiy;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Table(name="muscle_groups")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","userExercises","userMuscleGroups","workOutDayMuscleGroups"})
+
+@EqualsAndHashCode(of = "id")
 public class MuscleGroup {
     @Id
     @SequenceGenerator(name = "seq_muscle_groups",allocationSize = 1)
-    @GeneratedValue(generator = "seq_muscle_groups",strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "seq_muscle_groups",strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(length = 200,name ="title")
@@ -24,11 +27,8 @@ public class MuscleGroup {
     private List<UserExercise> userExercises;
 
     @OneToMany(mappedBy = "muscleGroup")
-    private List<UserMuscleGroups> userMuscleGroups;
+    private List<UserMuscleGroup> userMuscleGroups;
 
     @OneToMany(mappedBy = "muscleGroup")
     private List<WorkOutDayMuscleGroups> workOutDayMuscleGroups;
-
-
-
 }
