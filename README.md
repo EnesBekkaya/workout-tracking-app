@@ -1,3 +1,3 @@
 # workout-tracking-app 
 
-![alt text][url=https://www.hizliresim.com/kjr9lpc][img]https://i.hizliresim.com/kjr9lpc.PNG[/img][/url]
+![WOT-ERD](https://user-images.githubusercontent.com/83051118/198830422-09703274-4c05-46b7-b426-fa300416e84e.PNG)
